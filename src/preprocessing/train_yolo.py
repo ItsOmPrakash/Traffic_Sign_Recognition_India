@@ -11,7 +11,7 @@ def main():
         batch=16,
         device=0,
         workers=4,
-        cache=True,
+        cache= False,
         amp=True,
         project="reports",
         name="gtsrb_yolo11s"
