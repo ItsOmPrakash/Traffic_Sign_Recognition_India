@@ -1,0 +1,24 @@
+# Virtual Environment
+venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# Models
+*.pt
+*.onnx
+*.h5
+*.keras
+
+# Training Outputs
+runs/
+
+# Dataset
+data/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
