@@ -1,0 +1,12 @@
+{
+    "speed_limit": 0,
+    "stop": 1,
+    "give_way": 2,
+    "no_entry": 3,
+    "no_parking": 4,
+    "school_zone": 5,
+    "hospital_zone": 6,
+    "speed_breaker": 7,
+    "railway_crossing": 8,
+    "cattle_crossing": 9
+}

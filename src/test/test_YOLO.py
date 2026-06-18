@@ -1,7 +1,5 @@
-# test_yolo.py
-
 from ultralytics import YOLO
 
-model = YOLO("yolov8n.pt")
+model = YOLO("yolo11n.pt")
 
-print("YOLO Loaded Successfully")
+print("Loaded successfully")
