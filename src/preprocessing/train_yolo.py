@@ -1,6 +1,7 @@
 from ultralytics import YOLO
 
 def main():
+
     model = YOLO("yolo11s.pt")
 
     model.train(
@@ -11,6 +12,7 @@ def main():
         device=0,
         workers=4,
         cache=True,
+        amp=True,
         project="reports",
         name="gtsrb_yolo11s"
     )
