@@ -5,7 +5,10 @@ venv/
 __pycache__/
 *.pyc
 
-# Models
+# Datasets
+data/
+
+# Model Files
 *.pt
 *.onnx
 *.h5
@@ -14,11 +17,11 @@ __pycache__/
 # Training Outputs
 runs/
 
-# Dataset
-data/
-
 # VS Code
 .vscode/
+
+# Database
+*.db
 
 # Logs
 *.log
