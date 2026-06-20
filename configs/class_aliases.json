@@ -32,6 +32,10 @@
     "speedlimit_80": "speed_limit_80",
 
     "righthand_curve": "right_hand_curve",
+    
+    "pedestrain_crossing": "pedestrian_crossing",
+    "no_uturn": "u_turn_prohibited",
+    "pass_either_side": "vehicles_may_pass_either", 
 
     "petrol_station": "petrol_pump_ahead"
 }
