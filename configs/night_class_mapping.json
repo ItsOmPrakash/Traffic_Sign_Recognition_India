@@ -1,0 +1,80 @@
+{
+    "accident": "men_at_work",
+    "advertisement": null,
+    "airport": null,
+
+    "blow_horn": "sound_horn",
+
+    "bus_stop": null,
+
+    "cattle": "cattle",
+
+    "compulsory_left": "compulsary_turn_left",
+    "compulsory_right": "compulsary_turn_right",
+
+    "cross_road": "cross_road",
+
+    "direction": null,
+
+    "fuel": "petrol_pump_ahead",
+
+    "gap": "gap_in_median",
+
+    "give_way": "give_way",
+
+    "go_slow": "go_slow",
+
+    "hospital": "hospital_ahead",
+
+    "left_curve": "left_hand_curve",
+
+    "men_at_work": "men_at_work",
+
+    "narrow_road_ahead": "narrow_road_ahead",
+
+    "no_entry": "no_entry",
+
+    "no_overtaking": "no_overtaking",
+
+    "no_parking": "no_parking",
+
+    "no_stop_no_stand": "no_stopping_or_standing",
+
+    "parking": null,
+
+    "pedestrian_crossing": "pedestrian_crossing",
+
+    "right_curve": "right_hand_curve",
+
+    "round_about": "roundabout",
+
+    "school": "school_ahead",
+
+    "side_road_left": "side_road_left",
+
+    "side_road_right": "side_road_right",
+
+    "signal": "traffic_signal",
+
+    "speed_breaker": "bump",
+
+    "steep_ascent": "steep_ascent",
+
+    "steep_descent": "steep_descent",
+
+    "stop": "stop",
+
+    "t_intersection": "t_intersection",
+
+    "tampered": null,
+
+    "u_turn": "u_turn",
+
+    "unknown": null,
+
+    "warning": null,
+
+    "wide_road_ahead": "road_widens_ahead",
+
+    "speed": "speed_limit"
+}
