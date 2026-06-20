@@ -1,0 +1,37 @@
+{
+    "giveway": "give_way",
+    "crossroads": "cross_road",
+    "uturn": "u_turn",
+
+    "restriction_ends": "restriction_end",
+
+    "road_widens": "road_widens_ahead",
+    "road_wideness_ahead": "road_widens_ahead",
+
+    "narrow_bridge_ahead": "narrow_bridge",
+
+    "sideroad_toleft": "side_road_left",
+    "sideroad_toright": "side_road_right",
+
+    "yjunction": "y_intersection",
+
+    "narrowroad_ahead": "narrow_road_ahead",
+
+    "compulsory_ahead": "compulsary_ahead",
+    "compulsory_keep_left": "compulsary_keep_left",
+    "compulsory_soundhorn": "compulsary_sound_horn",
+    "compulsory_turn_right": "compulsary_turn_right",
+
+    "bullock_cart_and_hand_cart_prohibited": "bullock_and_handcart_prohibited",
+
+    "speedlimit_15": "speed_limit_15",
+    "speedlimit_20": "speed_limit_20",
+    "speedlimit_30": "speed_limit_30",
+    "speedlimit_40": "speed_limit_40",
+    "speedlimit_60": "speed_limit_60",
+    "speedlimit_80": "speed_limit_80",
+
+    "righthand_curve": "right_hand_curve",
+
+    "petrol_station": "petrol_pump_ahead"
+}

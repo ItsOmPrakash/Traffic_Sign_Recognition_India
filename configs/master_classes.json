@@ -1,0 +1,484 @@
+{
+    "all_motor_vehicle_prohibited": [
+        "All Motor Vehicle Prohibited",
+        "all motor vehicle prohibited"
+    ],
+    "barrier_ahead": [
+        "Barrier Ahead"
+    ],
+    "bullock_and_handcart_prohibited": [
+        "Bullock And Handcart Prohibited"
+    ],
+    "compulsary_ahead": [
+        "Compulsary Ahead",
+        "compulsary ahead"
+    ],
+    "compulsary_keep_left": [
+        "Compulsary Keep Left",
+        "compulsary keep left"
+    ],
+    "compulsary_keep_right": [
+        "Compulsary Keep Right",
+        "compulsary keep right"
+    ],
+    "compulsary_sound_horn": [
+        "Compulsary Sound Horn",
+        "compulsary sound horn"
+    ],
+    "compulsary_turn_left": [
+        "Compulsary Turn Left"
+    ],
+    "compulsary_turn_right": [
+        "Compulsary Turn Right"
+    ],
+    "cross_road": [
+        "Cross Road",
+        "cross road"
+    ],
+    "cycle_prohibited": [
+        "Cycle Prohibited",
+        "cycle prohibited"
+    ],
+    "give_way": [
+        "Give Way",
+        "give way"
+    ],
+    "horse_car_prohibited": [
+        "Horse Car Prohibited"
+    ],
+    "left_hand_curve": [
+        "Left Hand Curve",
+        "left hand curve",
+        "left_hand_curve"
+    ],
+    "left_reverse_bend": [
+        "Left Reverse Bend",
+        "left reverse bend",
+        "left_reverse_bend"
+    ],
+    "left_turn_prohibited": [
+        "Left Turn Prohibited",
+        "left turn prohibited"
+    ],
+    "major_road_ahead": [
+        "Major Road Ahead",
+        "major_road_ahead"
+    ],
+    "men_at_work": [
+        "Men At Work",
+        "men at work",
+        "men_at_work"
+    ],
+    "narrow_bridge": [
+        "Narrow Bridge",
+        "Narrow_Bridge"
+    ],
+    "narrow_road_ahead": [
+        "Narrow Road Ahead",
+        "narrow road ahead"
+    ],
+    "narrow_road_left_ahead": [
+        "Narrow Road Left Ahead"
+    ],
+    "no_entry": [
+        "No Entry",
+        "no entry",
+        "No_entry"
+    ],
+    "no_heavy_vehicles": [
+        "No Heavy Vehicles"
+    ],
+    "no_parking": [
+        "No Parking",
+        "no parking",
+        "No_parking"
+    ],
+    "no_stopping": [
+        "No Stopping",
+        "no_stopping"
+    ],
+    "pedestrian_crossing": [
+        "Pedestrian Crossing",
+        "pedestrian crossing"
+    ],
+    "pedestrian_prohibited": [
+        "Pedestrian Prohibited",
+        "pedestrian prohibited"
+    ],
+    "right_hair_pin_bend": [
+        "Right Hair Pin Bend"
+    ],
+    "right_hand_curve": [
+        "Right Hand Curve",
+        "right hand curve"
+    ],
+    "right_reverse_bend": [
+        "Right Reverse Bend",
+        "right reverse bend"
+    ],
+    "right_turn": [
+        "Right Turn"
+    ],
+    "right_turn_prohibited": [
+        "Right Turn Prohibited",
+        "right turn prohibited"
+    ],
+    "road_wideness_ahead": [
+        "Road Wideness Ahead"
+    ],
+    "roundabout": [
+        "Roundabout",
+        "roundabout"
+    ],
+    "school_ahead": [
+        "School Ahead",
+        "school ahead",
+        "school_ahead"
+    ],
+    "side_road": [
+        "Side Road"
+    ],
+    "slippery_road": [
+        "Slippery Road",
+        "slippery road"
+    ],
+    "sound_horn": [
+        "Sound Horn"
+    ],
+    "speed_limit": [
+        "Speed Limit"
+    ],
+    "steep_ascent": [
+        "Steep Ascent",
+        "steep ascent",
+        "steep_ascent"
+    ],
+    "stop": [
+        "Stop",
+        "stop"
+    ],
+    "straight_prohibited": [
+        "Straight Prohibited",
+        "straight prohibited"
+    ],
+    "t_junction": [
+        "T Junction"
+    ],
+    "traffic_signal": [
+        "Traffic  Signal",
+        "traffic signal"
+    ],
+    "two_way_signs": [
+        "Two Way Signs"
+    ],
+    "u_turn_prohibited": [
+        "U Turn Prohibited",
+        "u turn prohibited"
+    ],
+    "width_limit": [
+        "Width Limit",
+        "width limit",
+        "width_limit"
+    ],
+    "y_intersection": [
+        "Y Intersection",
+        "y intersection"
+    ],
+    "axle_load_limit": [
+        "axle load limit"
+    ],
+    "bullock_cart_and_hand_cart_prohibited": [
+        "bullock cart and hand cart prohibited"
+    ],
+    "cattle_ahead": [
+        "cattle ahead"
+    ],
+    "chevron_direction": [
+        "chevron direction"
+    ],
+    "compulsary_ahead_or_turn_left": [
+        "compulsary ahead or turn left"
+    ],
+    "compulsary_ahead_or_turn_right": [
+        "compulsary ahead or turn right"
+    ],
+    "compulsary_turn_left_ahead": [
+        "compulsary turn left ahead"
+    ],
+    "compulsary_turn_right_ahead": [
+        "compulsary turn right ahead"
+    ],
+    "cycle_crossing": [
+        "cycle crossing"
+    ],
+    "dangerous_dip": [
+        "dangerous dip"
+    ],
+    "falling_rocks": [
+        "falling rocks",
+        "falling_rocks"
+    ],
+    "gap_in_median": [
+        "gap in median",
+        "gap_in_median"
+    ],
+    "guarded_level_crossing": [
+        "guarded level crossing"
+    ],
+    "height_limit": [
+        "height limit",
+        "height_limit"
+    ],
+    "horn_prohibited": [
+        "horn prohibited"
+    ],
+    "hospital_ahead": [
+        "hospital ahead"
+    ],
+    "hump_or_rough_road": [
+        "hump or rough road"
+    ],
+    "length_limit": [
+        "length limit",
+        "length_limit"
+    ],
+    "loose_gravel": [
+        "loose gravel"
+    ],
+    "narrow_bridge_ahead": [
+        "narrow bridge ahead"
+    ],
+    "no_stopping_or_standing": [
+        "no stopping or standing"
+    ],
+    "overtaking_prohibited": [
+        "overtaking prohibited"
+    ],
+    "pass_either_side": [
+        "pass either side"
+    ],
+    "petrol_pump_ahead": [
+        "petrol pump ahead"
+    ],
+    "quay_side_or_river_bank": [
+        "quay side or river bank"
+    ],
+    "restriction_ends": [
+        "restriction ends"
+    ],
+    "road_widens_ahead": [
+        "road widens ahead"
+    ],
+    "side_road_left": [
+        "side road left"
+    ],
+    "side_road_right": [
+        "side road right"
+    ],
+    "speed_limit_100": [
+        "speed limit 100"
+    ],
+    "speed_limit_120": [
+        "speed limit 120"
+    ],
+    "speed_limit_15": [
+        "speed limit 15"
+    ],
+    "speed_limit_20": [
+        "speed limit 20"
+    ],
+    "speed_limit_30": [
+        "speed limit 30"
+    ],
+    "speed_limit_40": [
+        "speed limit 40"
+    ],
+    "speed_limit_50": [
+        "speed limit 50",
+        "speed_limit_50"
+    ],
+    "speed_limit_60": [
+        "speed limit 60"
+    ],
+    "speed_limit_70": [
+        "speed limit 70"
+    ],
+    "speed_limit_80": [
+        "speed limit 80"
+    ],
+    "staggered_intersection": [
+        "staggered intersection"
+    ],
+    "steep_descent": [
+        "steep descent",
+        "steep_descent"
+    ],
+    "t_intersection": [
+        "t intersection"
+    ],
+    "truck_prohibited": [
+        "truck prohibited"
+    ],
+    "u_turn": [
+        "u turn"
+    ],
+    "unguarded_level_crossing": [
+        "unguarded level crossing"
+    ],
+    "200_metres": [
+        "200 metres"
+    ],
+    "bump": [
+        "Bump"
+    ],
+    "crossroads": [
+        "Crossroads"
+    ],
+    "double_curve_first_to_left": [
+        "Double curve first to left"
+    ],
+    "doublecurve_first_to_right": [
+        "Doublecurve_First to right"
+    ],
+    "no_horn": [
+        "No_Horn"
+    ],
+    "no_left_turn": [
+        "No_left_Turn"
+    ],
+    "no_overtaking": [
+        "No_overtaking"
+    ],
+    "pedestrain_crossing": [
+        "Pedestrain_crossing"
+    ],
+    "restriction_end": [
+        "Restriction_end"
+    ],
+    "righthand_curve": [
+        "Righthand_curve"
+    ],
+    "road_widens": [
+        "Road_widens"
+    ],
+    "rumble_strip": [
+        "Rumble_strip"
+    ],
+    "sideroad_toleft": [
+        "Sideroad_toleft"
+    ],
+    "sideroad_toright": [
+        "Sideroad_toright"
+    ],
+    "twoway_hazardmarker": [
+        "Twoway_hazardmarker"
+    ],
+    "uturn": [
+        "Uturn"
+    ],
+    "bicycle": [
+        "bicycle"
+    ],
+    "cattle": [
+        "cattle"
+    ],
+    "chevron_left": [
+        "chevron_left"
+    ],
+    "chevron_right": [
+        "chevron_right"
+    ],
+    "children": [
+        "children"
+    ],
+    "compulsory_turn_right": [
+        "compulsory turn right"
+    ],
+    "compulsory_ahead": [
+        "compulsory_ahead"
+    ],
+    "compulsory_keep_left": [
+        "compulsory_keep_left"
+    ],
+    "compulsory_soundhorn": [
+        "compulsory_soundhorn"
+    ],
+    "dangerous_curve_ahead": [
+        "dangerous_curve_ahead"
+    ],
+    "giveway": [
+        "giveway"
+    ],
+    "go_slow": [
+        "go_slow"
+    ],
+    "level_crossing_with_barriers_ahead": [
+        "level crossing with barriers ahead"
+    ],
+    "merging_traffic_from_left": [
+        "merging_traffic_from_left"
+    ],
+    "narrowroad_ahead": [
+        "narrowroad_ahead"
+    ],
+    "no_uturn": [
+        "no_uturn"
+    ],
+    "object_hazzard_to_left": [
+        "object_hazzard_to_left"
+    ],
+    "object_hazzard_to_right": [
+        "object_hazzard_to_right"
+    ],
+    "one_way": [
+        "one_way"
+    ],
+    "petrol_station": [
+        "petrol_station"
+    ],
+    "roadnarrows_on_rightside": [
+        "roadnarrows_on_rightside"
+    ],
+    "speedlimit_15": [
+        "speedlimit_15"
+    ],
+    "speedlimit_20": [
+        "speedlimit_20"
+    ],
+    "speedlimit_30": [
+        "speedlimit_30"
+    ],
+    "speedlimit_40": [
+        "speedlimit_40"
+    ],
+    "speedlimit_60": [
+        "speedlimit_60"
+    ],
+    "speedlimit_65": [
+        "speedlimit_65"
+    ],
+    "speedlimit_80": [
+        "speedlimit_80"
+    ],
+    "start_of_dual_carriageway": [
+        "start_of_dual_carriageway"
+    ],
+    "straight_ahead_prohibited": [
+        "straight ahead prohibited"
+    ],
+    "tjunction_major_road_ahead": [
+        "tjunction_major_road_ahead"
+    ],
+    "triple_chevron": [
+        "triple_chevron"
+    ],
+    "vehicles_may_pass_either": [
+        "vehicles_may_pass_either"
+    ],
+    "yjunction": [
+        "yjunction"
+    ],
+    "yjunction_to_left": [
+        "yjunction_to_left"
+    ]
+}
