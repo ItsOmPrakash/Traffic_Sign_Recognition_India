@@ -3,9 +3,8 @@ from pathlib import Path
 
 # Load model
 model = YOLO(
-    r"runs\detect\reports\gtsrb_yolo11s_finetune\weights\best.pt"
+    "runs/detect/runs/detect/indian_yolo11s_finetune-5/weights/best.pt"
 )
-
 # Folder containing test images
 test_folder = Path("test_images")
 
