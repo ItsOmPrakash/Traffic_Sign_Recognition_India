@@ -25,3 +25,6 @@ runs/
 
 # Logs
 *.log
+
+# Temporary testing images
+test_images/
