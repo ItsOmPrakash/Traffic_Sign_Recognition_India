@@ -26,5 +26,10 @@ runs/
 # Logs
 *.log
 
-# Temporary testing images
+# testing images
 test_images/
+
+# Benchmark/Test Images
+test_videos/images/
+test_videos/*.mp4
+results/
