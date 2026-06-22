@@ -24,7 +24,7 @@ from speed_reader import read_speed_limit
 # ----------------------------
 
 model = YOLO(
-    r"runs/detect/runs/detect/indian_yolo11s_production_v1/weights/best.pt"
+    r"runs/detect/runs/detect/indian_yolo11s_augmented_v2/weights/best.pt"
 )
 # ----------------------------
 # Video Path
@@ -48,7 +48,7 @@ fps = int(cap.get(cv2.CAP_PROP_FPS))
 
 os.makedirs("results", exist_ok=True)
 
-output_path = "results/output_video.mp4"
+output_path = "results/output_video3.mp4"
 
 writer = cv2.VideoWriter(
     output_path,

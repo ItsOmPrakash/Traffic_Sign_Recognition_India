@@ -33,3 +33,7 @@ test_images/
 test_videos/images/
 test_videos/*.mp4
 results/
+
+#Output videos 
+src\dashboard\output_videos
+output_videos/*.mp4
