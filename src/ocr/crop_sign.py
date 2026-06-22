@@ -3,7 +3,7 @@ import cv2
 
 # Load trained Indian model
 model = YOLO(
-    r"runs/detect/runs/detect/indian_yolo11s_finetune-5/weights/best.pt"
+     r"runs/detect/runs/detect/indian_yolo11s_production_v1/weights/best.pt"
 )
 
 image_path = "test_images/image12.jpg"

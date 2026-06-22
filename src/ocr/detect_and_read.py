@@ -5,7 +5,7 @@ import os
 
 # Load trained model
 model = YOLO(
-    r"runs/detect/runs/detect/indian_yolo11s_augmented_v2/weights/best.pt"
+    r"runs/detect/runs/detect/indian_yolo11s_production_v1/weights/best.pt"
 )
 
 # Test image
