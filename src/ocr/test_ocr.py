@@ -2,16 +2,30 @@ import easyocr
 
 reader = easyocr.Reader(['en'])
 
-image_path = "test_images/crop_0.jpg"
+images = [
+    "Test_images/crop_0.jpg",
+    "Test_images/crop_1.jpg",
+    "Test_images/crop_2.jpg"
+]
 
-results = reader.readtext(image_path)
+for image_path in images:
 
-print("\nOCR RESULTS")
-print("=" * 40)
+    results = reader.readtext(
+        image_path
+    )
 
-for result in results:
-    bbox, text, confidence = result
+    print()
+    print("=" * 50)
+    print(image_path)
 
-    print(f"Text: {text}")
-    print(f"Confidence: {confidence:.2f}")
-    print("-" * 20)
+    for result in results:
+
+        bbox, text, confidence = result
+
+        print(
+            f"Text: {text}"
+        )
+
+        print(
+            f"Confidence: {confidence:.2f}"
+        )

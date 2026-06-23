@@ -242,6 +242,49 @@ body::before{
 .rv-dot.on{ background:var(--sign-green); }
 .rv-dot.warn{ background:var(--amber); }
 
+/* ============ ALERT ENGINE TOGGLE ============ */
+.engine-toggle-btn{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--text-mid);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:8px 14px;
+    border-radius:100px;
+    cursor:pointer;
+    transition:border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.engine-toggle-btn:hover{
+    border-color:var(--text-mid);
+    color:var(--text-hi);
+}
+
+.engine-toggle-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--amber);
+    flex-shrink:0;
+}
+
+.engine-toggle-btn.active{
+    border-color:var(--sign-green);
+    color:var(--sign-green);
+    background:rgba(63,179,127,0.08);
+}
+
+.engine-toggle-btn.active .engine-toggle-dot{
+    background:var(--sign-green);
+    box-shadow:0 0 6px rgba(63,179,127,0.6);
+    animation:livepulse 1.4s infinite;
+}
+
 /* ============ BUTTONS ============ */
 .btn{
     font-family:'IBM Plex Sans', sans-serif;

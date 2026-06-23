@@ -70,11 +70,11 @@
                     </div>
                     <div class="readout-row">
                         <span class="readout-label">Camera Feed</span>
-                        <span class="readout-value"><span class="rv-dot warn"></span>Standby</span>
+                        <span class="readout-value" id="cameraStatusValue"><span class="rv-dot warn" id="cameraStatusDot"></span><span id="cameraStatusText">Standby</span></span>
                     </div>
                     <div class="readout-row">
                         <span class="readout-label">Alert Engine</span>
-                        <span class="readout-value"><span class="rv-dot warn"></span>Standby</span>
+                        <span class="readout-value" id="alertEngineValue"><span class="rv-dot warn" id="alertEngineDot"></span><span id="alertEngineText">Standby</span></span>
                     </div>
                     <div class="readout-row">
                         <span class="readout-label">Model</span>
@@ -343,7 +343,13 @@
                     <span class="vleg-item"><span class="vleg-dot mid"></span>Medium</span>
                     <span class="vleg-item"><span class="vleg-dot low"></span>Low</span>
                 </div>
-                <span class="mono" style="font-size:0.75rem; color:var(--text-lo);" id="violationCount">0 incidents</span>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="mono" style="font-size:0.75rem; color:var(--text-lo);" id="violationCount">0 incidents</span>
+                    <button class="engine-toggle-btn" id="alertEngineToggleBtn">
+                        <span class="engine-toggle-dot"></span>
+                        <span id="alertEngineToggleLabel">Activate Alert Engine</span>
+                    </button>
+                </div>
             </div>
             <ul id="violationList" class="violation-list">
                 <li class="violation-empty">

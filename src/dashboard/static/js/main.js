@@ -49,6 +49,19 @@ async function updateDashboard() {
         setText("historyCount",         data.history.length);
         setText("alertCount",           data.alerts);
 
+        // hero status card — camera + alert engine reflect real backend state
+        setEngineStatus("cameraStatusDot", "cameraStatusText", data.camera_active, "Active", "Standby");
+        setEngineStatus("alertEngineDot",  "alertEngineText",  data.alert_engine_active, "Active", "Standby");
+
+        const toggleBtn = document.getElementById("alertEngineToggleBtn");
+        const toggleLbl = document.getElementById("alertEngineToggleLabel");
+        if (toggleBtn) {
+            toggleBtn.classList.toggle("active", !!data.alert_engine_active);
+            if (toggleLbl) toggleLbl.textContent = data.alert_engine_active
+                ? "Deactivate Alert Engine"
+                : "Activate Alert Engine";
+        }
+
         // live current-signs panel (only shown in live mode)
         const signsEl = document.getElementById("detectedSigns");
         if (signsEl) {
@@ -405,11 +418,26 @@ function stopLiveFeed() {
     livePollingActive = false;
 
     const img = document.getElementById("liveFeedImg");
-    if (img) img.src = "";       // cut the stream
+    if (img) img.src = "";       // cut the stream client-side
 
     document.getElementById("livePanel")?.classList.add("d-none");
     document.getElementById("liveStartWrap")?.classList.remove("d-none");
+
+    // Tell the backend to release the webcam right away. The server also
+    // auto-releases when the MJPEG connection drops, but this makes it
+    // immediate instead of waiting on the next failed frame read.
+    fetch("/video/stop", { method: "POST" }).catch(() => {});
 }
+
+// Belt-and-suspenders: if the page is closed or navigated away from while
+// the live feed is running, release the camera instead of leaving it open.
+window.addEventListener("beforeunload", () => {
+    if (livePollingActive) {
+        navigator.sendBeacon
+            ? navigator.sendBeacon("/video/stop")
+            : fetch("/video/stop", { method: "POST", keepalive: true }).catch(() => {});
+    }
+});
 
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -420,6 +448,29 @@ function setText(id, value) {
     const el = document.getElementById(id);
     if (el) el.innerText = value;
 }
+
+function setEngineStatus(dotId, textId, isActive, onLabel, offLabel) {
+    const dot  = document.getElementById(dotId);
+    const text = document.getElementById(textId);
+    if (dot)  dot.classList.toggle("on", !!isActive);
+    if (dot)  dot.classList.toggle("warn", !isActive);
+    if (text) text.textContent = isActive ? onLabel : offLabel;
+}
+
+document.getElementById("alertEngineToggleBtn")?.addEventListener("click", async () => {
+    try {
+        const res  = await fetch("/alert-engine/toggle", { method: "POST" });
+        const data = await res.json();
+        // reflect immediately; the next poll will confirm it
+        setEngineStatus("alertEngineDot", "alertEngineText", data.active, "Active", "Standby");
+        const btn = document.getElementById("alertEngineToggleBtn");
+        const lbl = document.getElementById("alertEngineToggleLabel");
+        if (btn) btn.classList.toggle("active", data.active);
+        if (lbl) lbl.textContent = data.active ? "Deactivate Alert Engine" : "Activate Alert Engine";
+    } catch (err) {
+        console.warn("Alert engine toggle failed:", err);
+    }
+});
 
 function indexOfBytes(haystack, needle) {
     outer: for (let i = 0; i <= haystack.length - needle.length; i++) {

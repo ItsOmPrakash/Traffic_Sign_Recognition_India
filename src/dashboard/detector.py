@@ -5,11 +5,26 @@ import tempfile
 import subprocess
 import shutil
 import threading
+import base64
 
 from ultralytics import YOLO
 from datetime import datetime
 
 from dashboard_state import latest_data
+
+import sys
+
+SRC_PATH = os.path.abspath(
+    os.path.join(
+        os.path.dirname(__file__),
+        ".."
+    )
+)
+
+if SRC_PATH not in sys.path:
+    sys.path.append(SRC_PATH)
+
+from pipeline.sign_pipeline import detect_and_classify
 
 MODEL_PATH = r"runs/detect/runs/detect/indian_yolo11s_production_v1/weights/best.pt"
 
@@ -69,6 +84,7 @@ def _get_camera():
     global _camera
     if _camera is None or not _camera.isOpened():
         _camera = cv2.VideoCapture(0)
+        latest_data["camera_active"] = _camera.isOpened()
     return _camera
 
 
@@ -77,6 +93,7 @@ def release_camera():
     if _camera and _camera.isOpened():
         _camera.release()
         _camera = None
+    latest_data["camera_active"] = False
 
 
 # ─────────────────────────────────────────────
@@ -93,6 +110,9 @@ def _update_avg_confidence(conf_value):
 
 
 def _maybe_add_violation(sign_name):
+    if not latest_data.get("alert_engine_active"):
+        return   # engine is in standby — detection still runs, alerts don't
+
     key = sign_name.lower()
     for pattern, severity in VIOLATION_SIGNS.items():
         if pattern in key:
@@ -109,45 +129,54 @@ def _maybe_add_violation(sign_name):
                 latest_data["alerts"] += 1
             latest_data["violations"] = latest_data["violations"][:50]
             break
+def _process_detections(frame, results):
+    """
+    Single source of truth for turning a YOLO pass into everything the
+    dashboard needs: history, violations, sign counts, AND the Sign
+    Inspector snapshot (crop + OCR + both confidence scores).
 
+    YOLO already ran once in the caller (generate_frames / detect_image /
+    _run_video_pipeline) — this just runs EfficientNet + OCR on the boxes
+    it found, via sign_pipeline.detect_and_classify.
+    """
+    detections = detect_and_classify(frame, results)
 
-def _process_results(results, frame_conf):
     detected_signs = []
     highest_conf   = 0.0
+    best_detection = None
 
-    for result in results:
-        for box in result.boxes:
-            cls_id     = int(box.cls[0])
-            confidence = float(box.conf[0])
-            sign_name  = model.names[cls_id].replace("_", " ")
+    for det in detections:
+        sign_name  = det["sign"].replace("_", " ")
+        confidence = det["confidence"]   # classifier %, 0-100
 
-            if sign_name not in detected_signs:
-                detected_signs.append(sign_name)
-                timestamp = datetime.now().strftime("%H:%M:%S")
+        if sign_name not in detected_signs:
+            detected_signs.append(sign_name)
+            timestamp = datetime.now().strftime("%H:%M:%S")
 
-                if (
-                    len(latest_data["history"]) == 0
-                    or latest_data["history"][0]["sign"] != sign_name
-                ):
-                    latest_data["history"].insert(0, {
-                        "sign": sign_name,
-                        "time": timestamp
-                    })
+            if (
+                len(latest_data["history"]) == 0
+                or latest_data["history"][0]["sign"] != sign_name
+            ):
+                latest_data["history"].insert(0, {
+                    "sign": sign_name,
+                    "time": timestamp
+                })
 
-                _maybe_add_violation(sign_name)
-                latest_data["sign_counts"][sign_name] = (
-                    latest_data["sign_counts"].get(sign_name, 0) + 1
-                )
+            _maybe_add_violation(sign_name)
+            latest_data["sign_counts"][sign_name] = (
+                latest_data["sign_counts"].get(sign_name, 0) + 1
+            )
 
-            if confidence > highest_conf:
-                highest_conf = confidence
+        if confidence > highest_conf:
+            highest_conf   = confidence
+            best_detection = det
 
     latest_data["history"]       = latest_data["history"][:20]
     latest_data["current_signs"] = detected_signs
-    latest_data["confidence"]    = round(highest_conf * 100, 2)
+    latest_data["confidence"]    = round(highest_conf, 2)
     latest_data["total_signs"]   = sum(latest_data["sign_counts"].values())
 
-    _update_avg_confidence(round(highest_conf * 100, 2))
+    _update_avg_confidence(round(highest_conf, 2))
 
     if latest_data["sign_counts"]:
         latest_data["top_sign"] = max(
@@ -155,7 +184,21 @@ def _process_results(results, frame_conf):
             key=latest_data["sign_counts"].get
         )
 
-    return detected_signs, highest_conf
+    # ── Sign Inspector snapshot — the single best detection this frame ──
+    if best_detection is not None:
+        ok, buf = cv2.imencode(".jpg", best_detection["crop"])
+        crop_b64 = base64.b64encode(buf.tobytes()).decode("utf-8") if ok else None
+
+        latest_data["inspector"] = {
+            "sign":                  best_detection["sign"].replace("_", " "),
+            "ocr":                   best_detection["ocr"],
+            "yolo_confidence":       best_detection["yolo_confidence"],
+            "classifier_confidence": best_detection["confidence"],
+            "time":                  datetime.now().strftime("%H:%M:%S"),
+            "crop_image":            crop_b64,
+        }
+
+    return detections
 
 
 # ─────────────────────────────────────────────
@@ -164,27 +207,33 @@ def _process_results(results, frame_conf):
 
 def generate_frames():
     camera = _get_camera()
-    while True:
-        start = time.time()
-        success, frame = camera.read()
-        if not success:
-            break
+    try:
+        while True:
+            start = time.time()
+            success, frame = camera.read()
+            if not success:
+                break
 
-        results = model(frame, conf=0.35, verbose=False)
-        _process_results(results, 0)
+            results = model(frame, conf=0.35, verbose=False)
+            _process_detections(frame, results)
 
-        elapsed = time.time() - start
-        latest_data["fps"] = round(1 / elapsed, 1) if elapsed > 0 else 0
+            elapsed = time.time() - start
+            latest_data["fps"] = round(1 / elapsed, 1) if elapsed > 0 else 0
 
-        annotated = results[0].plot()
-        ret, buffer = cv2.imencode(".jpg", annotated)
+            annotated = results[0].plot()
+            ret, buffer = cv2.imencode(".jpg", annotated)
 
-        yield (
-            b'--frame\r\n'
-            b'Content-Type: image/jpeg\r\n\r\n'
-            + buffer.tobytes()
-            + b'\r\n'
-        )
+            yield (
+                b'--frame\r\n'
+                b'Content-Type: image/jpeg\r\n\r\n'
+                + buffer.tobytes()
+                + b'\r\n'
+            )
+    finally:
+        # Runs whether the loop breaks naturally OR the browser disconnects
+        # (tab switch, navigate away, page close all raise GeneratorExit on
+        # the next `yield`) — so the webcam is never left running unattended.
+        release_camera()
 
 
 # ─────────────────────────────────────────────
@@ -204,12 +253,25 @@ def detect_image(file_storage):
         return None, []
 
     results = model(frame, conf=0.35, verbose=False)
-    detected_signs, _ = _process_results(results, 0)
+    detections = _process_detections(frame, results)
 
     annotated = results[0].plot()
     ret, buffer = cv2.imencode(".jpg", annotated)
 
-    return buffer.tobytes(), detected_signs
+    # Build a clean, JSON-safe payload per sign — including its own crop,
+    # OCR reading, and both confidence scores — for the Sign Inspector cards.
+    signs_payload = []
+    for det in detections:
+        ok, crop_buf = cv2.imencode(".jpg", det["crop"])
+        signs_payload.append({
+            "sign":                  det["sign"].replace("_", " "),
+            "ocr":                   det["ocr"],
+            "yolo_confidence":       det["yolo_confidence"],
+            "classifier_confidence": det["confidence"],
+            "crop_image":            base64.b64encode(crop_buf.tobytes()).decode("utf-8") if ok else None,
+        })
+
+    return buffer.tobytes(), signs_payload
 
 
 # ─────────────────────────────────────────────
@@ -306,7 +368,7 @@ def _run_video_pipeline(job_id, tmp_path, out_path):
                 return
 
             results = model(frame, conf=0.35, verbose=False)
-            _process_results(results, 0)
+            _process_detections(frame, results)
 
             annotated = results[0].plot()
             writer.write(annotated)

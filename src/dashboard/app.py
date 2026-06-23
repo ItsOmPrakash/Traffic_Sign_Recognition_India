@@ -39,6 +39,13 @@ def video_stop():
     detector.release_camera()
     return jsonify({"ok": True})
 
+# ── Alert engine ───────────────────────────────────────────────────────────────
+
+@app.route("/alert-engine/toggle", methods=["POST"])
+def alert_engine_toggle():
+    latest_data["alert_engine_active"] = not latest_data.get("alert_engine_active", False)
+    return jsonify({"active": latest_data["alert_engine_active"]})
+
 # ── Dashboard data ─────────────────────────────────────────────────────────────
 
 @app.route("/detections")
