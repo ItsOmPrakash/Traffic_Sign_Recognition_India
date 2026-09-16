@@ -243,7 +243,7 @@ train_loader = DataLoader(
 
     shuffle=True,
 
-    num_workers=4,
+    num_workers=0,
 
     pin_memory=True
 )
@@ -257,7 +257,7 @@ val_loader = DataLoader(
 
     shuffle=False,
 
-    num_workers=4,
+    num_workers=0,
 
     pin_memory=True
 )

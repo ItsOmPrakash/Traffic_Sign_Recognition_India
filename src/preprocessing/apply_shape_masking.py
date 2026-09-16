@@ -65,6 +65,7 @@ CLASS_SHAPE_MAP = {
     "NO_STOPPING_OR_STANDING": "circle",
     "OVERTAKING_PROHIBITED": "circle",
     "PASS_EITHER_SIDE": "circle",
+    "PEDESTRIAN_PROHIBITED": "circle",
     "RESTRICTION_ENDS": "circle",
     "RIGHT_TURN_PROHIBITED": "circle",
     "ROUNDABOUT": "circle",

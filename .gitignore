@@ -33,6 +33,7 @@ test_images/
 test_videos/images/
 test_videos/*.mp4
 results/
+models/
 
 # Generated outputs
 output_*.mp4
