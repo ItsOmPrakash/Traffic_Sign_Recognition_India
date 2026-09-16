@@ -94,7 +94,7 @@ def detect_video():
     tmp.close()
 
     # Reset progress immediately
-    latest_data["video_frames_done"]  = 0
+    latest_data["video_frames_done"]  = 0 
     latest_data["video_frames_total"] = 1
     latest_data["video_done"]         = False
     latest_data["video_output_file"]  = ""

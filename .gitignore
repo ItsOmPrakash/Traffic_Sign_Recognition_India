@@ -37,6 +37,9 @@ results/
 # Generated outputs
 output_*.mp4
 
+# Temporary files
+*.tmp
+
 #Output videos 
 src\dashboard\output_videos
 output_videos/*.mp4
