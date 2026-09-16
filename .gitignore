@@ -34,6 +34,9 @@ test_videos/images/
 test_videos/*.mp4
 results/
 
+# Generated outputs
+output_*.mp4
+
 #Output videos 
 src\dashboard\output_videos
 output_videos/*.mp4
